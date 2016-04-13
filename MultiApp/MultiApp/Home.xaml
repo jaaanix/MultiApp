@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+  <TabbedPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MultiApp;assembly=MultiApp"
+    x:Class="MultiApp.Home" Title="Multi App with Tab Layout">
+    <TabbedPage.Children>
+        <local:UserPage Title="User" />
+        <local:CalendarPage Title="Calendar" />
+    </TabbedPage.Children>
+</TabbedPage>

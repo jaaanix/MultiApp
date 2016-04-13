@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MultiApp.CalendarPage">
+  <ContentPage.Content>
+    <StackLayout>
+      <Label x:Name="timeLabel"
+      FontSize="Large"
+      HorizontalOptions="Center"
+      VerticalOptions="EndAndExpand" />
+      <Label x:Name="dateLabel"
+      HorizontalOptions="Center"
+      VerticalOptions="StartAndExpand" />
+      <DatePicker x:Name="datePicker" />
+      <Button x:Name="newsIconBtn" FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE774;" />
+      <Button x:Name="calendarIconBtn" FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE163;" Clicked="calendarBtnClicked" />
+      <Button x:Name="userIconBtn" FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE13D;" />
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>
