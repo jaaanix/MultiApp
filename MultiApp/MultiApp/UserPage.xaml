@@ -7,15 +7,11 @@
       <Label x:Name="userName" FontSize="40" />
       <Label x:Name="userAcc" FontSize="24" />
       <Label x:Name="userMail" FontSize="24" />
-      <Label Text="{Binding Items}" />
       <ListView x:Name="tasksListView"
-                VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-                ItemsSource="{Binding Items}"  IsPullToRefreshEnabled="False" ItemTapped="OnItemTapped" >
-        <ListView.ItemTemplate>
-          <DataTemplate x:Name="tasksListViewDataTemplate">
-            <TextCell />
-          </DataTemplate>
-        </ListView.ItemTemplate>
+                VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsPullToRefreshEnabled="False" ItemTapped="OnItemTapped">
+        <DataTemplate x:Name="dataTemplate">
+          <TextCell Text="{Binding Title}" Detail="{Binding Completed}" DetailColor="Red"/>
+        </DataTemplate>
       </ListView>
       <Image Scale="0.3">
         <Image.Source>

@@ -14,15 +14,15 @@ namespace MultiApp.Models
         public string Completed { get; set; }
 
         // 'Items' wird als 'Binding'-Property der ListView angegeben
-        public ObservableCollection<string> Items { get; private set; }
+        //public ObservableCollection<string> Items { get; private set; }
 
-        public ObservableCollection<string> ChildItems { get; private set; }
+        //public ObservableCollection<string> ChildItems { get; private set; }
 
         public Task()
         {
             // Items und ChildItems vom Typ String Collection initialisieren
-            Items = new ObservableCollection<string> { };
-            ChildItems = new ObservableCollection<string> { };
+            //Items = new ObservableCollection<string> { };
+            //ChildItems = new ObservableCollection<string> { };
         }
     }
 }

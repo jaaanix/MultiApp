@@ -6,6 +6,7 @@ using System.Net.Http;
 
 using Xamarin.Forms;
 using System;
+using System.Collections.Generic;
 
 namespace MultiApp
 {
@@ -22,25 +23,25 @@ namespace MultiApp
         {
 
             Task tasks = new Task();
+            List<Task> liste = new List<Task>();
             
             var client = new HttpClient();
-            var result = await client.GetStringAsync("http://jsonplaceholder.typicode.com/todos/1");
-            if (result != null)
+            int todoId = 1;
+            while (todoId <= 10)
             {
-                // Füllt Observeable Collection mit Items (ListView-Einträgen)
-                tasks.Items.Add(JsonConvert.DeserializeObject<Task>(result).Title);
-                tasks.ChildItems.Add(JsonConvert.DeserializeObject<Task>(result).Completed);
-                tasksListViewDataTemplate.SetBinding(TextCell.TextProperty, JsonConvert.DeserializeObject<Task>(result).Title);
-
-                tasksListViewDataTemplate.SetValue(TextCell.TextColorProperty, Color.Red);
-                //tasksListViewDataTemplate.SetBinding(TextCell.TextProperty, tasks.Title);
-                //tasksListViewDataTemplate.SetBinding(TextCell.DetailProperty, tasks.Completed);
-                //tasksListViewDataTemplate.SetValue(TextCell.TextProperty, "rofls");
-
-                // Setzt BindingContext für die ListView
-                tasksListView.BindingContext = tasks;
+                var result = await client.GetStringAsync("http://jsonplaceholder.typicode.com/todos/" + todoId.ToString());
+                todoId++;
+                if (result != null)
+                {
+                    // Füllt Observeable Collection mit Items (ListView-Einträgen)
+                    liste.Add(JsonConvert.DeserializeObject<Task>(result));
+                    // Die ListView an die Liste Datenliste mit TODOs binden und dem DataTemplate
+                    //...
+                    //tasksListView.BindingContext = liste;
+                }
             }
-
+            tasksListView.ItemTemplate = dataTemplate;
+            tasksListView.ItemsSource = liste;
         }
 
         public async void getUser()
