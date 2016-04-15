@@ -21,25 +21,22 @@ namespace MultiApp
 
         private async void getTasks()
         {
-
-            Task tasks = new Task();
             List<Task> liste = new List<Task>();
             
             var client = new HttpClient();
             int todoId = 1;
-            while (todoId <= 10)
+            while (todoId <= 10) // 10 ToDos fetchen
             {
                 var result = await client.GetStringAsync("http://jsonplaceholder.typicode.com/todos/" + todoId.ToString());
                 todoId++;
                 if (result != null)
                 {
-                    // Füllt Observeable Collection mit Items (ListView-Einträgen)
+                    // Füllt Liste mit Items (ListView-Einträgen)
                     liste.Add(JsonConvert.DeserializeObject<Task>(result));
-                    // Die ListView an die Liste Datenliste mit TODOs binden und dem DataTemplate
-                    //...
-                    //tasksListView.BindingContext = liste;
+                    
                 }
             }
+            // Die ListView an die Liste Datenliste mit TODOs binden und dem DataTemplate
             tasksListView.ItemTemplate = dataTemplate;
             tasksListView.ItemsSource = liste;
         }
@@ -53,6 +50,7 @@ namespace MultiApp
                 userName.Text = JsonConvert.DeserializeObject<User>(result).name;
                 userAcc.Text = JsonConvert.DeserializeObject<User>(result).username;
                 userMail.Text = JsonConvert.DeserializeObject<User>(result).email;
+                userPhone.Text = JsonConvert.DeserializeObject<User>(result).phone;
             }
         }
 

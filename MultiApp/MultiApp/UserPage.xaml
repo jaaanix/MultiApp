@@ -3,22 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MultiApp.UserPage">
   <ContentPage.Content>
-    <StackLayout>
-      <Label x:Name="userName" FontSize="40" />
-      <Label x:Name="userAcc" FontSize="24" />
-      <Label x:Name="userMail" FontSize="24" />
-      <ListView x:Name="tasksListView"
-                VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsPullToRefreshEnabled="False" ItemTapped="OnItemTapped">
-        <DataTemplate x:Name="dataTemplate">
-          <TextCell Text="{Binding Title}" Detail="{Binding Completed}" DetailColor="Red"/>
-        </DataTemplate>
-      </ListView>
-      <Image Scale="0.3">
-        <Image.Source>
-          <UriImageSource Uri="https://image.freepik.com/free-icon/male-user-shadow_318-34042.png"/>
-        </Image.Source>
-      </Image>
-
+    <StackLayout Orientation="Vertical">
+      <StackLayout Orientation="Horizontal">
+        <StackLayout Orientation="Vertical">
+          <Label x:Name="userName" FontSize="28" />
+          <Label x:Name="userAcc" FontSize="24" />
+          <Label x:Name="userMail" FontSize="24" />
+          <Label x:Name="userPhone" FontSize="24" />
+        </StackLayout>
+        <Image Scale="0.3" >
+          <Image.Source>
+            <UriImageSource Uri="https://image.freepik.com/free-icon/male-user-shadow_318-34042.png"/>
+          </Image.Source>
+        </Image>
+      </StackLayout>
+      <AbsoluteLayout>
+        <ListView x:Name="tasksListView" Header="ToDo's" ItemTapped="OnItemTapped">
+          <DataTemplate x:Name="dataTemplate">
+            <TextCell Text="{Binding Title}" Detail="{Binding Completed}" />
+          </DataTemplate>
+        </ListView>
+      </AbsoluteLayout>
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>
