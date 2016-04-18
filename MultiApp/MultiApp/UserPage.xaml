@@ -17,13 +17,14 @@
           </Image.Source>
         </Image>
       </StackLayout>
-      <AbsoluteLayout>
-        <ListView x:Name="tasksListView" Header="ToDo's" ItemTapped="OnItemTapped">
+      <StackLayout Orientation="Vertical">
+        <ListView x:Name="tasksListView" Header="ToDo's" ItemTapped="OnItemTapped" 
+                  IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshTasks}" IsRefreshing="{Binding IsRefreshing, Mode=OneWay}">
           <DataTemplate x:Name="dataTemplate">
             <TextCell Text="{Binding Title}" Detail="{Binding Completed}" />
           </DataTemplate>
         </ListView>
-      </AbsoluteLayout>
+          </StackLayout>
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>
