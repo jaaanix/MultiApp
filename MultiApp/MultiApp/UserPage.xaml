@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MultiApp.UserPage">
+             x:Class="MultiApp.UserPage"
+             x:Name="UserPage">
   <ContentPage.Content>
     <StackLayout Orientation="Vertical">
       <StackLayout Orientation="Horizontal">
@@ -19,7 +20,8 @@
       </StackLayout>
       <StackLayout Orientation="Vertical">
         <ListView x:Name="tasksListView" Header="ToDo's" ItemTapped="OnItemTapped" 
-                  IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshTasks}" IsRefreshing="{Binding IsRefreshing, Mode=OneWay}">
+                  IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshTasks}" 
+                  IsRefreshing="{Binding IsRefreshing, Mode=OneWay}" BindingContext="{x:Reference Name=UserPage}">
           <DataTemplate x:Name="dataTemplate">
             <TextCell Text="{Binding Title}" Detail="{Binding Completed}" />
           </DataTemplate>
