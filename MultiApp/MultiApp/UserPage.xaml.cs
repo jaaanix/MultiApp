@@ -10,6 +10,8 @@ namespace MultiApp
 {
     public partial class UserPage : ContentPage
     {
+        public string uri = "http://jsonplaceholder.typicode.com/";
+        //public string uri = "http://192.168.56.129:3000/";
         private bool isRefreshing;
         public bool IsRefreshing
         {
@@ -53,7 +55,7 @@ namespace MultiApp
             int todoId = 1;
             while (todoId <= 10) // 10 ToDos fetchen
             {
-                var result = await client.GetStringAsync("http://jsonplaceholder.typicode.com/todos/" + todoId.ToString());
+                var result = await client.GetStringAsync(uri + "todos/" + todoId.ToString());
                 todoId++;
                 if (result != null)
                 {
@@ -73,7 +75,7 @@ namespace MultiApp
         public async void getUser()
         {
             var client = new HttpClient();
-            var result = await client.GetStringAsync("http://jsonplaceholder.typicode.com/users/2");
+            var result = await client.GetStringAsync(uri + "users/" + "2");
             if (result != null)
             {
                 userName.Text = JsonConvert.DeserializeObject<User>(result).name;
@@ -89,13 +91,13 @@ namespace MultiApp
             {
                 HttpContent content = new StringContent("true");
                 var client = new HttpClient();
-                await client.PutAsync("http://jsonplaceholder.typicode.com/todos/" + task.Id, content);
+                await client.PutAsync(uri + "todos/" + task.Id, content);
             }
             else
             {
                 HttpContent content = new StringContent("false");
                 var client = new HttpClient();
-                await client.PutAsync("http://jsonplaceholder.typicode.com/todos/" + task.Id, content);
+                await client.PutAsync(uri + "todos/" + task.Id, content);
             }
         }
 
